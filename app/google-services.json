@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "146815992848",
+    "project_id": "reflexgame-a497f",
+    "storage_bucket": "reflexgame-a497f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146815992848:android:a39dcd95caa1e335fef695",
+        "android_client_info": {
+          "package_name": "com.example.reflexgame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "146815992848-2ubv6tpk9vh5sjtmkgem2suajatffari.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.reflexgame",
+            "certificate_hash": "f47a0c741fda76087906f97a376dc45e2aeeba3f"
+          }
+        },
+        {
+          "client_id": "146815992848-t83hi4qv01madle2t88ge1tbtd5f9o5k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALYtL462vKqBCInCE4yo3G2EXim7y0j0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "146815992848-t83hi4qv01madle2t88ge1tbtd5f9o5k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

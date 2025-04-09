@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">ReflexGame</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Sign up</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="back_to_login">Cancel</string>
+    <string name="registration">Sign up</string>
+    <string name="log_in_with_google">Log in with Google</string>
+    <string name="log_in_as_guest">Continue as guest</string>
+    <string name="log_in_with_facebook">Log in with Facebook</string>
+
+    <string name="facebook_app_id">974582391091316</string>
+    <string name="fb_login_protocol_scheme">fb974582391091316</string>
+    <string name="facebook_client_token">56789</string>
+    <string name="select_username">Select Username</string>
+    <string name="confirm_username">Confirm Username</string>
+    <string name="username2">Username</string>
+    <string name="delete_my_acount">Delete my Acount</string>
+    <string name="main_menu">Main Menu</string>
+</resources>
