@@ -2,7 +2,10 @@ package com.example.reflexgame;
 
 import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -143,6 +146,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
+        if(!checkInternet()){return;}
+
         loadingLayout.setVisibility(View.VISIBLE);
 
         String userNameString = String.valueOf(emailED.getText());
@@ -167,11 +172,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void toRegister(View view) {
+        if(!checkInternet()){return;}
+
         Intent intent = new Intent(this, RegistrationActivity.class);
         startActivity(intent);
     }
 
     public void loginWithGoogle(View view) {
+        if(!checkInternet()){return;}
+
         loadingLayout.setVisibility(View.VISIBLE);
 
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -179,6 +188,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginWithFacebook(View view){
+        if(!checkInternet()){return;}
+
         loadingLayout.setVisibility(View.VISIBLE);
 
         LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
@@ -186,6 +197,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginAsGuest(View view) {
+        if(!checkInternet()){return;}
+
         loadingLayout.setVisibility(View.VISIBLE);
 
         mAuth.signInAnonymously().addOnCompleteListener(this, task -> {
@@ -261,6 +274,8 @@ public class LoginActivity extends AppCompatActivity {
         facebookLoginButton.postDelayed(() -> ObjectAnimator.ofFloat(guestLoginButton, "alpha", 1f).setDuration(250).start(), 1750);
     }
 
+
+    //fake error do ignore
     @Override
     public void onBackPressed(){
         new AlertDialog.Builder(this)
@@ -272,5 +287,23 @@ public class LoginActivity extends AppCompatActivity {
                 })
                 .setNegativeButton("No", null)
                 .show();
+    }
+
+    public static boolean isConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if (cm != null) {
+            NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+            return activeNetwork != null && activeNetwork.isConnected();
+        }
+        return false;
+    }
+
+    private boolean checkInternet(){
+        if(!isConnected(this)){
+            Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }
