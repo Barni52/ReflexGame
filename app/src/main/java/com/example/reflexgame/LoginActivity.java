@@ -64,7 +64,9 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        animate();
+        if (savedInstanceState == null) {
+            animate();
+        }
 
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager,

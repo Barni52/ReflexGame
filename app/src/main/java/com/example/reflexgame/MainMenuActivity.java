@@ -47,7 +47,6 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public void logout(View view){
-        mAuth.signOut();
         goToLogin();
     }
 
@@ -92,6 +91,7 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     private void goToLogin(){
+        mAuth.signOut();
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
