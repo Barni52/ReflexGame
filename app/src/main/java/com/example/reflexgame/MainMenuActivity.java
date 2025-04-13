@@ -22,25 +22,36 @@ public class MainMenuActivity extends AppCompatActivity {
 
     private FirebaseUser user;
     private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+
         db = FirebaseFirestore.getInstance();
 
 
-        checkUserId();
+        if(!checkUserId()){
+            goToLogin();
+            finish();
+            return;
+        }
 
         if(!user.isAnonymous()){
             usernameExists();
         }
     }
 
-    private void usernameExists() {
+    public void logout(View view){
+        mAuth.signOut();
+        goToLogin();
+    }
 
+    private void usernameExists() {
         db.collection("users").document(user.getUid()).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
@@ -58,12 +69,13 @@ public class MainMenuActivity extends AppCompatActivity {
 
     }
 
-    private void checkUserId(){
+    private boolean checkUserId(){
         if(user != null){
             Log.d(LoginActivity.LOG_TAG, "User is logged in(from main)");
+            return true;
         } else{
             Log.d(LoginActivity.LOG_TAG, "User is not logged in(from main)");
-            finish();
+            return false;
         }
     }
 
@@ -82,19 +94,5 @@ public class MainMenuActivity extends AppCompatActivity {
     private void goToLogin(){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
-    }
-
-    public void deleteAccount(View view){
-        if (user != null) {
-            user.delete()
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            Log.d("Firebase", "User account deleted.");
-                            goToLogin();
-                        } else {
-                            Log.e("Firebase", "Account deletion failed", task.getException());
-                        }
-                    });
-        }
     }
 }
