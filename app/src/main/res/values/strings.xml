@@ -20,4 +20,6 @@
     <string name="username2">Username</string>
     <string name="delete_my_acount">Delete my Acount</string>
     <string name="main_menu">Main Menu</string>
+    <string name="logout">Logout</string>
+    <string name="under_construction">🚧 Under Construction 🚧</string>
 </resources>

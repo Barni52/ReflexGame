@@ -64,7 +64,9 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        animate();
+        if (savedInstanceState == null) {
+            animate();
+        }
 
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager,
@@ -72,7 +74,6 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
                         handleFacebookAccessToken(loginResult.getAccessToken());
-                        goToMainMenu();
                     }
 
                     @Override
@@ -99,9 +100,9 @@ public class LoginActivity extends AppCompatActivity {
 
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential).addOnCompleteListener(this, task -> {
-            loadingLayout.setVisibility(View.GONE);
             if (task.isSuccessful()) {
                 Log.d(LOG_TAG, "signInWithCredential:success");
+                loadingLayout.setVisibility(View.GONE);
                 goToMainMenu();
             } else {
                 Log.w(LOG_TAG, "signInWithCredential:failure", task.getException());
