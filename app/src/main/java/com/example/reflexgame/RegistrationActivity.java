@@ -108,17 +108,18 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void saveUserToDatabase(String userName, String email){
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user != null){
-            String uid = user.getUid();
+        FirebaseUser FireBaseuser = mAuth.getCurrentUser();
+        if(FireBaseuser != null){
+            String uid = FireBaseuser.getUid();
 
-            Map<String, Object> userMap = new HashMap<>();
-            userMap.put("uid", uid);
-            userMap.put("username", userName);
-            userMap.put("email", email);
-            userMap.put("highscore", 0);
+            User user = new User();
+            user.setUid(uid);
+            user.setUsername(userName);
+            user.setEmail(email);
+            user.setHighscore(0);
 
-            db.collection("users").document(uid).set(userMap).addOnCompleteListener(aVoid -> {
+
+            db.collection("users").document(uid).set(user).addOnCompleteListener(aVoid -> {
                         Log.d(LoginActivity.LOG_TAG, "Username saved successfully.");
                         goToMainMenu();
                     })
