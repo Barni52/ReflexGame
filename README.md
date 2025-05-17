@@ -48,3 +48,7 @@
 3. **SelectUsernameActivity – 59. sor**
 
 ---
+
+---
+A maradék követelményt vagy csak teszteléssel lehet ellenőrizni vagy triviálisan megtalálható
+---
