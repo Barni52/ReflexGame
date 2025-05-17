@@ -1,6 +1,5 @@
 package com.example.reflexgame;
 
-import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -24,18 +23,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.facebook.bolts.TaskCompletionSource;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Calendar;
 
@@ -82,14 +75,11 @@ public class MainMenuActivity extends AppCompatActivity {
 
 
         guideWebView = findViewById(R.id.guideWebView);
-        // Enable JavaScript if the page requires it
-        WebSettings webSettings = guideWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
 
         // Keep navigation inside the WebView
         guideWebView.setWebViewClient(new WebViewClient());
 
-        // Load your external guide URL
+        // Load the external guide URL
         guideWebView.loadUrl("https://barni52.github.io/");
 
         checkNotificationPermission();
@@ -149,7 +139,7 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public void goToLeaderBoard(View view) {
-        Intent intent = new Intent(this, LeaderBoard.class);
+        Intent intent = new Intent(this, LeaderBoardActivity.class);
         startActivity(intent);
     }
 
