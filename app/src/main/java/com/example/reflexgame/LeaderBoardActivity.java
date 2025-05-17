@@ -8,11 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -20,7 +16,7 @@ import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 
-public class LeaderBoard extends AppCompatActivity {
+public class LeaderBoardActivity extends AppCompatActivity {
 
     FirebaseFirestore db;
 
@@ -35,13 +31,13 @@ public class LeaderBoard extends AppCompatActivity {
 
         ImageView logoutIcon = findViewById(R.id.backIcon);
         logoutIcon.setOnClickListener(v -> {
-            Intent intent = new Intent(LeaderBoard.this, MainMenuActivity.class);
+            Intent intent = new Intent(LeaderBoardActivity.this, MainMenuActivity.class);
             startActivity(intent);
         });
 
         ImageView profileIcon = findViewById(R.id.profileIcon);
         profileIcon.setOnClickListener(v -> {
-            Intent intent = new Intent(LeaderBoard.this, ProfileActivity.class);
+            Intent intent = new Intent(LeaderBoardActivity.this, ProfileActivity.class);
             startActivity(intent);
         });
 
