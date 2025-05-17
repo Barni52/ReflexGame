@@ -1,6 +1,7 @@
 package com.example.reflexgame;
 
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -277,6 +278,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     //fake error do ignore
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onBackPressed(){
         new AlertDialog.Builder(this)

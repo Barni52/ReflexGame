@@ -22,4 +22,5 @@
     <string name="main_menu">Main Menu</string>
     <string name="logout">Logout</string>
     <string name="under_construction">🚧 Under Construction 🚧</string>
+    <string name="play">Play</string>
 </resources>

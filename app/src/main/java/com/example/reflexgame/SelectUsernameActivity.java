@@ -78,14 +78,15 @@ public class SelectUsernameActivity extends AppCompatActivity {
         if(user != null){
             String uid = user.getUid();
 
-            Map<String, Object> userMap = new HashMap<>();
-            userMap.put("uid", uid);
-            userMap.put("username", userName);
-            userMap.put("email", email);
-            userMap.put("highscore", 0);
+            User user = new User();
+            user.setUid(uid);
+            user.setUsername(userName);
+            user.setEmail(email);
+            user.setHighscore(0);
+
             Log.d(LoginActivity.LOG_TAG, "Username started to save successfully 2.");
 
-            db.collection("users").document(uid).set(userMap).addOnCompleteListener(aVoid -> {
+            db.collection("users").document(uid).set(user).addOnCompleteListener(aVoid -> {
                     Log.d(LoginActivity.LOG_TAG, "Username saved successfully.");
                     goToMainMenu();
 
@@ -117,7 +118,6 @@ public class SelectUsernameActivity extends AppCompatActivity {
         }
     }
 
-    //fake error, do ignore
     @Override
     public void onBackPressed () {
         goToLogin();
