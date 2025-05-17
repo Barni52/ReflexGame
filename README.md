@@ -15,9 +15,7 @@
 ---
 
 ## Lifecycle Hook
-- **LeaderBoardActivity – 47. sor**  
-  Egy életciklushoz kötött esemény, amely például `onResume()` vagy `onStart()` metódusban található.
-
+- **LeaderBoardActivity – 47. sor**
 ---
 
 ## Erőforrások (Resources)
@@ -49,4 +47,8 @@
 2. **LeaderBoardActivity – 58. sor**
 3. **SelectUsernameActivity – 59. sor**
 
+---
+
+---
+A maradék követelményt vagy csak teszteléssel lehet ellenőrizni vagy triviálisan megtalálható
 ---
