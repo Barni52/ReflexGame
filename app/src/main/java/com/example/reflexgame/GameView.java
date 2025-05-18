@@ -40,7 +40,7 @@ public class GameView extends View {
 
         // Start the game loop
         handler.post(gameLoop);
-        // Also: periodically spawn new circles
+        // periodically spawn new circles
         handler.post(spawnLoop);
     }
 
@@ -72,7 +72,6 @@ public class GameView extends View {
         @Override
         public void run() {
             spawnCircle();
-            // spawn every 1 second (customize)
             handler.postDelayed(this, 500);
         }
     };

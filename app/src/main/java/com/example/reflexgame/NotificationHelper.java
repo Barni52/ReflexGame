@@ -25,7 +25,6 @@ public class NotificationHelper {
 
     private void createChannelIfNeeded() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            // importance default: makes a sound but no heads-up
             NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID,
                     CHANNEL_NAME,
@@ -36,12 +35,7 @@ public class NotificationHelper {
         }
     }
 
-    /**
-     * Call this when the user breaks their high score.
-     * @param newScore the score they just achieved
-     */
     public void sendHighScoreNotification(int newScore) {
-        // For Android 13+ ensure permission granted
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ActivityCompat.checkSelfPermission(context,
                     android.Manifest.permission.POST_NOTIFICATIONS)
@@ -50,7 +44,7 @@ public class NotificationHelper {
             }
         }
 
-        // Build an Intent to launch your MainActivity (or wherever you like)
+        // Build an Intent to launch the MainActivity
         Intent intent = new Intent(context, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(
@@ -64,7 +58,6 @@ public class NotificationHelper {
         String text = "You scored " + newScore + " points!";
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                // Use a built-in Android icon so you don't need any image assets
                 .setSmallIcon(android.R.drawable.ic_dialog_info)
                 .setContentTitle(title)
                 .setContentText(text)
